@@ -84,6 +84,14 @@ For instance, let's generate a dataset with the following description:
 - size of validation subset: 10%.
 
 ```bash
+proteinflow generate --sabdab --resolution_thr 5 --not_filter_methods --min_seq_id 0.4 --valid_split 0.1
+```
+
+### Splitting
+By default, both `proteinflow generate` and `proteinflow download` will also split your data into training, test and validation according to MMseqs2 clustering and homomer/heteromer/single chain proportions. However, you can skip this step with a `--skip_splitting` flag and then perform it separately with the `proteinflow split` command.
+
+The following command will perform the splitting with a 10% validation set, a 5% test set and a 50% threshold for sequence identity clusters.
+```bash
 proteinflow split --tag new --valid_split 0.1 --test_split 0.5 --min_seq_id 0.5
 ```
 
